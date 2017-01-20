@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Custom Pattern for Antispam Bee
+ * Plugin Name: Custom Patterns for Antispam Bee
  * Description: Add custom patterns for Antispam Bee.
  * Plugin URI:  http://torstenlandsiedel.de
  * Version:     1.1
