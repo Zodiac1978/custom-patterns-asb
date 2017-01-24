@@ -8,6 +8,7 @@
  * Author URI:  http://torstenlandsiedel.de
  * Licence:     GPL 2
  * License URI: http://opensource.org/licenses/GPL-2.0
+ * GitHub Plugin URI: https://github.com/Zodiac1978/custom-patterns-asb
  */
  
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
