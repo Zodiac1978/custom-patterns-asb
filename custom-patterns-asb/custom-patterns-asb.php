@@ -61,8 +61,8 @@ function antispam_bee_add_custom_patterns( $patterns ) {
 
 	// Crazy spam with exactly 10 chars in name and 30 chars in body.
 	$patterns[] = array(
-		'body' => '\b[a-z]{30}\b',
-		'name' => '\b[a-z]{10}\b',
+		'body'   => '\b[a-z]{30}\b',
+		'author' => '\b[a-z]{10}\b',
 	);
 
 	// Spam text in email.
