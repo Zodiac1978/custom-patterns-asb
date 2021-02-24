@@ -2,7 +2,7 @@
     "name": "zodiac1978/custom-patterns-asb",
     "description": "Add custom patterns for Antispam Bee.",
     "type": "wordpress-plugin",
-    "license": "GPL 2",
+    "license": "GPL-2.0-or-later",
     "require": {
         "php": ">=5.6.0",
         "composer/installers": "~1.0"
