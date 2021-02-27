@@ -3,7 +3,7 @@ Add custom patterns for Antispam Bee.
 
 ## License
 
-This plugin is licensed as GPLv2. You can finde more details about it in the [LICENSE](https://github.com/Zodiac1978/custom-patterns-asb/blob/master/LICENSE) file.
+This plugin is licensed as GPLv2. You can find more details about it in the [LICENSE](https://github.com/Zodiac1978/custom-patterns-asb/blob/master/LICENSE) file.
 
 ## Stay up to date
 
