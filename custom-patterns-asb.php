@@ -8,6 +8,7 @@
  * Author URI:  https://torstenlandsiedel.de
  * Licence:     GPL 2
  * License URI: http://opensource.org/licenses/GPL-2.0
+ * Update URI:  https://github.com/Zodiac1978/custom-patterns-asb
  * GitHub Plugin URI: https://github.com/Zodiac1978/custom-patterns-asb
  */
 
