@@ -3,10 +3,10 @@
  * Plugin Name: Custom Patterns for Antispam Bee
  * Description: Add custom patterns for Antispam Bee.
  * Plugin URI:  https://torstenlandsiedel.de
- * Version:     1.3
+ * Version:     1.4.0
  * Author:      Torsten Landsiedel
  * Author URI:  https://torstenlandsiedel.de
- * Licence:     GPL 2
+ * License:     GPL 2
  * License URI: http://opensource.org/licenses/GPL-2.0
  * Update URI:  https://github.com/Zodiac1978/custom-patterns-asb
  * GitHub Plugin URI: https://github.com/Zodiac1978/custom-patterns-asb
@@ -24,7 +24,8 @@ add_filter( 'antispam_bee_patterns', 'antispam_bee_add_custom_patterns' );
 /**
  * Add more RegExp patterns
  *
- * @param   Array $patterns All RegExp patterns from ASB.
+ * @param array $patterns All RegExp patterns from ASB.
+ * @return array All RegExp patterns including the custom patterns.
  */
 function antispam_bee_add_custom_patterns( $patterns ) {
 	// Body text with two or less characters.
@@ -60,10 +61,25 @@ function antispam_bee_add_custom_patterns( $patterns ) {
 		'body' => '(xxx|sex)(\d\d\d).(top|xyz)',
 	);
 
-	// Crazy spam with exactly 10 chars in name and 30 chars in body.
+	// Random-string spam with exactly 30 letters in the body and 10 or 11 in the name.
 	$patterns[] = array(
-		'body'   => '\b[a-z]{30}\b',
-		'author' => '\b[a-z]{10}\b',
+		'body'   => '^[a-z]{30}$',
+		'author' => '^[a-z]{10,11}$',
+	);
+
+	// ClickBank affiliate spam with a generic call-to-action link.
+	$patterns[] = array(
+		'body' => '<a\b[^>]*href=["\']https?:\/\/[^"\']+\.hop\.clickbank\.net[^"\']*["\'][^>]*>\s*click here\s*<\/a>',
+	);
+
+	// Weight-loss template spam with additional context and a call-to-action link.
+	$patterns[] = array(
+		'body' => '\b(?:weight loss|excess weight)\b.{0,700}\b(?:\d+\s*kg|game-changer)\b.{0,700}<a\b[^>]*>\s*click here\s*<\/a>',
+	);
+
+	// Generic post-summary template spam with a call-to-action link.
+	$patterns[] = array(
+		'body' => '\b(?:your|this) post\b.{0,350}\bfor more details\b.{0,150}<a\b[^>]*>\s*click here\s*<\/a>',
 	);
 
 	// Spam text in email.
