@@ -83,6 +83,27 @@ function antispam_bee_add_custom_patterns( $patterns ) {
 		'body' => '\b(?:your|this) post\b.{0,350}\bfor more details\b.{0,150}<a\b[^>]*>\s*click here\s*<\/a>',
 	);
 
+	// Elavil spam from a repeatedly observed domain.
+	$patterns[] = array(
+		'body' => '\belavil\b',
+		'host' => '^(?:https?:\/\/)?(?:www\.)?elavil365y\.com(?:\/|$)',
+	);
+
+	// Invalid author URL without a dot in its host name.
+	$patterns[] = array(
+		'host' => '^(?:https?:\/\/)?[^.\/\s]+\/?$',
+	);
+
+	// Numeric-only bot names.
+	$patterns[] = array(
+		'author' => '^\d{5,}$',
+	);
+
+	// Purchase solicitation combined with an HTML link.
+	$patterns[] = array(
+		'body' => '^(?=.*\bbuy\b)(?=.*<a\b)',
+	);
+
 	// Spam text in email.
 	$patterns[] = array(
 		'email' => 'viagra|(?<!spe)cialis|casino',

@@ -40,3 +40,5 @@ Thanks to https://github.com/sdellenb for the idea and first patterns.
 Thanks to https://github.com/drivingralle for inspiration and talking about new patterns.
 
 Thanks to https://github.com/pfefferle/ for your starting help with Composer/Packagist.
+
+Thanks to [ibericode/ibericode-mods](https://github.com/ibericode/ibericode-mods/blob/main/includes/comment-spam.php) for additional pattern ideas.

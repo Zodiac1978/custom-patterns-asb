@@ -209,6 +209,64 @@ $cases = array(
 			'body' => 'https://one.example and http://two.example',
 		),
 	),
+	array(
+		'label'    => 'Elavil spam from the observed domain',
+		'expected' => true,
+		'comment'  => array(
+			'body' => 'elavil anxiety dosage',
+			'host' => 'elavil365y.com',
+		),
+	),
+	array(
+		'label'    => 'Elavil discussion on another domain',
+		'expected' => false,
+		'comment'  => array(
+			'body' => 'A medical article discussing Elavil and anxiety.',
+			'host' => 'https://example.org/',
+		),
+	),
+	array(
+		'label'    => 'author URL without a dot',
+		'expected' => true,
+		'comment'  => array(
+			'host' => 'https://not-a-domain/',
+		),
+	),
+	array(
+		'label'    => 'valid author URL with a dot',
+		'expected' => false,
+		'comment'  => array(
+			'host' => 'https://example.org/',
+		),
+	),
+	array(
+		'label'    => 'numeric-only bot name',
+		'expected' => true,
+		'comment'  => array(
+			'author' => '817689',
+		),
+	),
+	array(
+		'label'    => 'numeric-only comment remains allowed',
+		'expected' => false,
+		'comment'  => array(
+			'body' => '10240',
+		),
+	),
+	array(
+		'label'    => 'buy solicitation with an HTML link',
+		'expected' => true,
+		'comment'  => array(
+			'body' => '<a href="https://example.org/product">Buy this product</a>',
+		),
+	),
+	array(
+		'label'    => 'buy without an HTML link',
+		'expected' => false,
+		'comment'  => array(
+			'body' => 'Where can I buy this book?',
+		),
+	),
 );
 
 foreach ( $cases as $case ) {
