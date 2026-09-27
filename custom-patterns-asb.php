@@ -38,27 +38,27 @@ function antispam_bee_add_custom_patterns( $patterns ) {
 		'email' => '@mail\.ru|@yandex\.$',
 	);
 
-	// every comment with .ru/.bid top level doman
+	// Every comment with a .ru/.bid top-level domain.
 	// @link: http://www.online-erfolgreich.net/webseite-und-technik/spam-bekaempfen-mit-antispam-bee-und-regulaere-ausdruecke-via-plugin-hook/
 	$patterns[] = array(
-		'email' => '(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.(ru|bid)+$)',
+		'email' => '^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.(?:ru|bid)$',
 	);
 
 	// Spam text in author name.
 	$patterns[] = array(
-		'author' => '(xxx|sex)(\d\d\d).(top|xyz)',
+		'author' => '(xxx|sex)(\d\d\d)\.(top|xyz)',
 	);
 	// Spam text in email.
 	$patterns[] = array(
-		'email' => '(xxx|sex)(\d\d\d).(top|xyz)',
+		'email' => '(xxx|sex)(\d\d\d)\.(top|xyz)',
 	);
 	// Spam text in hostname.
 	$patterns[] = array(
-		'host' => '(xxx|sex)(\d\d\d).(top|xyz)',
+		'host' => '(xxx|sex)(\d\d\d)\.(top|xyz)',
 	);
 	// Spam text in body.
 	$patterns[] = array(
-		'body' => '(xxx|sex)(\d\d\d).(top|xyz)',
+		'body' => '(xxx|sex)(\d\d\d)\.(top|xyz)',
 	);
 
 	// Random-string spam with exactly 30 letters in the body and 10 or 11 in the name.
@@ -106,7 +106,7 @@ function antispam_bee_add_custom_patterns( $patterns ) {
 	// non latin characters (like Cyrillic, Japanese, etc.) in body
 	// @link: http://www.regular-expressions.info/unicode.html
 	$patterns[] = array(
-		'body' => '\p{Arabic}|\p{Armenian}|\p{Bengali}|\p{Bopomofo}|\p{Braille}|\p{Buhid}|\p{Canadian_Aboriginal}|\p{Cherokee}|\p{Cyrillic}|\p{Devanagari}|\p{Ethiopic}|\p{Georgian}|\p{Greek}|\p{Gujarati}|\p{Gurmukhi}|\p{Han}|\p{Hangul}|\p{Hanunoo}|\p{Hebrew}|\p{Hiragana}|\p{Inherited}|\p{Kannada}|\p{Katakana}|\p{Khmer}|\p{Lao}|\p{Limbu}|\p{Malayalam}|\p{Mongolian}|\p{Myanmar}|\p{Ogham}|\p{Oriya}|\p{Runic}|\p{Sinhala}|\p{Syriac}|\p{Tagalog}|\p{Tagbanwa}|\p{Tamil}|\p{Telugu}|\p{Thaana}|\p{Thai}|\p{Tibetan}|\p{Yi}',
+		'body' => '\p{Arabic}|\p{Armenian}|\p{Bengali}|\p{Bopomofo}|\p{Braille}|\p{Buhid}|\p{Canadian_Aboriginal}|\p{Cherokee}|\p{Cyrillic}|\p{Devanagari}|\p{Ethiopic}|\p{Georgian}|\p{Greek}|\p{Gujarati}|\p{Gurmukhi}|\p{Han}|\p{Hangul}|\p{Hanunoo}|\p{Hebrew}|\p{Hiragana}|\p{Kannada}|\p{Katakana}|\p{Khmer}|\p{Lao}|\p{Limbu}|\p{Malayalam}|\p{Mongolian}|\p{Myanmar}|\p{Ogham}|\p{Oriya}|\p{Runic}|\p{Sinhala}|\p{Syriac}|\p{Tagalog}|\p{Tagbanwa}|\p{Tamil}|\p{Telugu}|\p{Thaana}|\p{Thai}|\p{Tibetan}|\p{Yi}',
 	);
 
 	return $patterns;

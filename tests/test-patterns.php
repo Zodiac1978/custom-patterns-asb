@@ -132,6 +132,41 @@ $cases = array(
 			'body' => 'Your post was helpful. Thanks for publishing it.',
 		),
 	),
+	array(
+		'label'    => 'ru top-level domain',
+		'expected' => true,
+		'comment'  => array(
+			'email' => 'person@example.ru',
+		),
+	),
+	array(
+		'label'    => 'repeated ru top-level domain fragment',
+		'expected' => false,
+		'comment'  => array(
+			'email' => 'person@example.ruru',
+		),
+	),
+	array(
+		'label'    => 'spam domain with a literal dot',
+		'expected' => true,
+		'comment'  => array(
+			'body' => 'Visit xxx123.top today',
+		),
+	),
+	array(
+		'label'    => 'spam domain with a non-dot separator',
+		'expected' => false,
+		'comment'  => array(
+			'body' => 'Visit xxx123Xtop today',
+		),
+	),
+	array(
+		'label'    => 'inherited combining character without another blocked script',
+		'expected' => false,
+		'comment'  => array(
+			'body' => "Cafe\xCC\x81 is written with a combining accent.",
+		),
+	),
 );
 
 foreach ( $cases as $case ) {
