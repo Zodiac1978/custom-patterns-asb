@@ -6,8 +6,9 @@
  * Version:     1.4.0
  * Author:      Torsten Landsiedel
  * Author URI:  https://torstenlandsiedel.de
- * License:     GPL 2
- * License URI: http://opensource.org/licenses/GPL-2.0
+ * Requires PHP: 8.0
+ * License:     GPL v2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Update URI:  https://github.com/Zodiac1978/custom-patterns-asb
  * GitHub Plugin URI: https://github.com/Zodiac1978/custom-patterns-asb
  */
@@ -33,9 +34,9 @@ function antispam_bee_add_custom_patterns( $patterns ) {
 		'body' => '^(?=.{0,2}$).*',
 	);
 
-	// Spammy email addresses (gmail would be here too, but this is not useful for an european blog).
+	// Spammy email providers (Gmail is intentionally not included).
 	$patterns[] = array(
-		'email' => '@mail\.ru|@yandex\.$',
+		'email' => '@(?:mail\.ru|yandex\.(?:ru|com|by|kz))$',
 	);
 
 	// Every comment with a .ru/.bid top-level domain.
@@ -84,23 +85,23 @@ function antispam_bee_add_custom_patterns( $patterns ) {
 
 	// Spam text in email.
 	$patterns[] = array(
-		'email' => 'viagra|cialis|casino',
+		'email' => 'viagra|(?<!spe)cialis|casino',
 	);
 
 	// Spam text in host/url.
 	$patterns[] = array(
-		'host' => 'viagra|cialis|casino',
+		'host' => 'viagra|(?<!spe)cialis|casino',
 	);
 
 	// Spam text in body.
 	$patterns[] = array(
-		'body' => 'target[t]?ed (visitors|traffic)|viagra|cialis',
+		'body' => 'target[t]?ed (?:visitors|traffic)|viagra|(?<!spe)cialis',
 	);
 
 	// 3 or more links in body
 	// http://www.online-erfolgreich.net/webseite-und-technik/spam-bekaempfen-mit-antispam-bee-und-regulaere-ausdruecke-via-plugin-hook/
 	$patterns[] = array(
-		'body' => '(.*(http|https|ftp|ftps)\:\/\/){3,}',
+		'body' => '(?:https?|ftps?):\/\/.*?(?:https?|ftps?):\/\/.*?(?:https?|ftps?):\/\/',
 	);
 
 	// non latin characters (like Cyrillic, Japanese, etc.) in body

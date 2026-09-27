@@ -167,6 +167,48 @@ $cases = array(
 			'body' => "Cafe\xCC\x81 is written with a combining accent.",
 		),
 	),
+	array(
+		'label'    => 'supported Yandex domain',
+		'expected' => true,
+		'comment'  => array(
+			'email' => 'person@yandex.com',
+		),
+	),
+	array(
+		'label'    => 'unknown Yandex domain',
+		'expected' => false,
+		'comment'  => array(
+			'email' => 'person@yandex.invalid',
+		),
+	),
+	array(
+		'label'    => 'pharma term embedded in a spam domain',
+		'expected' => true,
+		'comment'  => array(
+			'host' => 'https://www.acheterviagrafr24.com/',
+		),
+	),
+	array(
+		'label'    => 'cialis substring in specialist',
+		'expected' => false,
+		'comment'  => array(
+			'body' => 'A specialist answered the question.',
+		),
+	),
+	array(
+		'label'    => 'three links using different protocols',
+		'expected' => true,
+		'comment'  => array(
+			'body' => 'https://one.example ftp://two.example http://three.example',
+		),
+	),
+	array(
+		'label'    => 'only two links',
+		'expected' => false,
+		'comment'  => array(
+			'body' => 'https://one.example and http://two.example',
+		),
+	),
 );
 
 foreach ( $cases as $case ) {

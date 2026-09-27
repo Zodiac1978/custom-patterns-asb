@@ -7,7 +7,7 @@ This plugin is licensed as GPLv2. You can find more details about it in the [LIC
 
 ## Stay up to date
 
-You need to have installed the [Github Updater](https://github.com/afragen/github-updater) from Andy Fragen to keep the plugin up-to-date.
+You need to have installed [Git Updater](https://github.com/afragen/git-updater) from Andy Fragen to keep the plugin up to date.
 
 Obviously [Antispam Bee](https://wordpress.org/plugins/antispam-bee/) needs to be installed too ... 😉
 
