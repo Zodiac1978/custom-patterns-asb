@@ -3,7 +3,7 @@
  * Plugin Name: Custom Patterns for Antispam Bee
  * Description: Add custom patterns for Antispam Bee.
  * Plugin URI:  https://torstenlandsiedel.de
- * Version:     1.4.0
+ * Version:     1.4.1
  * Author:      Torsten Landsiedel
  * Author URI:  https://torstenlandsiedel.de
  * Requires PHP: 8.0
@@ -29,9 +29,10 @@ add_filter( 'antispam_bee_patterns', 'antispam_bee_add_custom_patterns' );
  * @return array All RegExp patterns including the custom patterns.
  */
 function antispam_bee_add_custom_patterns( $patterns ) {
-	// Body text with two or less characters.
+	// Body text consisting of exactly two ASCII uppercase letters.
+	// Disable Antispam Bee's case-insensitive modifier locally.
 	$patterns[] = array(
-		'body' => '^(?=.{0,2}$).*',
+		'body' => '^(?-i:[A-Z]{2})$',
 	);
 
 	// Spammy email providers (Gmail is intentionally not included).

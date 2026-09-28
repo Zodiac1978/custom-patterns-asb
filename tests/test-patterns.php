@@ -67,6 +67,34 @@ function custom_patterns_asb_is_spam( $patterns, $comment ) {
 
 $cases = array(
 	array(
+		'label'    => 'two-uppercase-letter spam body',
+		'expected' => true,
+		'comment'  => array(
+			'body' => 'QF',
+		),
+	),
+	array(
+		'label'    => 'mixed-case two-letter comment',
+		'expected' => false,
+		'comment'  => array(
+			'body' => 'Ok',
+		),
+	),
+	array(
+		'label'    => 'capitalized two-letter word',
+		'expected' => false,
+		'comment'  => array(
+			'body' => 'Ja',
+		),
+	),
+	array(
+		'label'    => 'single uppercase letter',
+		'expected' => false,
+		'comment'  => array(
+			'body' => 'Q',
+		),
+	),
+	array(
 		'label'    => 'random strings with a 10-character author',
 		'expected' => true,
 		'comment'  => array(
