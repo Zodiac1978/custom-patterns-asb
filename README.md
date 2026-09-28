@@ -1,4 +1,7 @@
 # Custom Patterns for Antispam Bee
+
+[![Donate with PayPal](https://img.shields.io/badge/PayPal-Donate-yellow.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LCH9UVV7RKDFY)
+
 Add custom patterns for Antispam Bee.
 
 ## License
