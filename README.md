@@ -4,6 +4,8 @@
 
 Add custom patterns for Antispam Bee.
 
+All patterns can be enabled or disabled individually under **Settings → Antispam Bee Patterns**. On a new installation and after updating from an earlier version, all patterns are enabled by default.
+
 ## License
 
 This plugin is licensed as GPLv2. You can find more details about it in the [LICENSE](https://github.com/Zodiac1978/custom-patterns-asb/blob/master/LICENSE) file.

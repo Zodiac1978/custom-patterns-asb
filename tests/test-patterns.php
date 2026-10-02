@@ -16,10 +16,82 @@ define( 'ABSPATH', __DIR__ );
 function add_filter( $hook, $callback ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
 }
 
+/**
+ * WordPress action stub used while loading the plugin.
+ *
+ * @param string   $hook     Action name.
+ * @param callable $callback Action callback.
+ */
+function add_action( $hook, $callback ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
+}
+
+/**
+ * Return an option from the test store.
+ *
+ * @param string $name    Option name.
+ * @param mixed  $default Default value.
+ * @return mixed
+ */
+function get_option( $name, $default = false ) {
+	global $custom_patterns_asb_test_options;
+
+	return array_key_exists( $name, $custom_patterns_asb_test_options ) ? $custom_patterns_asb_test_options[ $name ] : $default;
+}
+
+/**
+ * Minimal sanitize_key() replacement for the standalone test.
+ *
+ * @param string $key Value to sanitize.
+ * @return string
+ */
+function sanitize_key( $key ) {
+	return preg_replace( '/[^a-z0-9_\-]/', '', strtolower( (string) $key ) );
+}
+
+/**
+ * Minimal translation function replacement for the standalone test.
+ *
+ * @param string $text   Source text.
+ * @param string $domain Text domain.
+ * @return string
+ */
+function __( $text, $domain = 'default' ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
+	return $text;
+}
+
+$custom_patterns_asb_test_options = array();
+
 require dirname( __DIR__ ) . '/custom-patterns-asb.php';
 
 $patterns = antispam_bee_add_custom_patterns( array() );
 $failures = array();
+
+if ( 20 !== count( $patterns ) ) {
+	$failures[] = 'all patterns are enabled by default';
+}
+
+$custom_patterns_asb_test_options[ CUSTOM_PATTERNS_ASB_OPTION ] = array( 'numeric-author' );
+$selected_patterns = antispam_bee_add_custom_patterns( array() );
+
+if ( array( array( 'author' => '^\d{5,}$' ) ) !== $selected_patterns ) {
+	$failures[] = 'saved pattern selection is applied';
+}
+
+$custom_patterns_asb_test_options[ CUSTOM_PATTERNS_ASB_OPTION ] = array();
+
+if ( array() !== antispam_bee_add_custom_patterns( array() ) ) {
+	$failures[] = 'all patterns can be disabled';
+}
+
+$sanitized = custom_patterns_asb_sanitize_enabled_patterns(
+	array( 'three-links', 'unknown-pattern', 'NUMERIC-AUTHOR', 'three-links' )
+);
+
+if ( array( 'numeric-author', 'three-links' ) !== $sanitized ) {
+	$failures[] = 'pattern selection is sanitized and ordered';
+}
+
+unset( $custom_patterns_asb_test_options[ CUSTOM_PATTERNS_ASB_OPTION ] );
 
 foreach ( $patterns as $pattern_index => $pattern ) {
 	foreach ( $pattern as $field => $regexp ) {
