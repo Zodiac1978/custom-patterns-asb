@@ -47,6 +47,11 @@ function custom_patterns_asb_get_pattern_definitions() {
 			'description' => __( 'Blocks email addresses from Mail.ru and selected Yandex domains.', 'custom-patterns-asb' ),
 			'pattern'     => array( 'email' => '@(?:mail\.ru|yandex\.(?:ru|com|by|kz))$' ),
 		),
+		'invalid-gmail-address' => array(
+			'label'       => __( 'Invalid Gmail address', 'custom-patterns-asb' ),
+			'description' => __( 'Detects Gmail and Googlemail addresses that violate Google’s username syntax rules.', 'custom-patterns-asb' ),
+			'pattern'     => array( 'email' => '^(?![a-z0-9](?:\.?[a-z0-9]){5,29}(?:\+[^@\s]+)?@(?:gmail|googlemail)\.com$).+@(?:gmail|googlemail)\.com$' ),
+		),
 		'ru-bid-email-domains' => array(
 			'label'       => __( 'Email domains ending in .ru or .bid', 'custom-patterns-asb' ),
 			'description' => __( 'Detects email addresses using the .ru or .bid top-level domain.', 'custom-patterns-asb' ),

@@ -66,7 +66,7 @@ require dirname( __DIR__ ) . '/custom-patterns-asb.php';
 $patterns = antispam_bee_add_custom_patterns( array() );
 $failures = array();
 
-if ( 20 !== count( $patterns ) ) {
+if ( 21 !== count( $patterns ) ) {
 	$failures[] = 'all patterns are enabled by default';
 }
 
@@ -272,6 +272,97 @@ $cases = array(
 		'expected' => true,
 		'comment'  => array(
 			'email' => 'person@yandex.com',
+		),
+	),
+	array(
+		'label'    => 'Gmail username with too few characters',
+		'expected' => true,
+		'comment'  => array(
+			'email' => 'abcde@gmail.com',
+		),
+	),
+	array(
+		'label'    => 'Gmail username with too many characters',
+		'expected' => true,
+		'comment'  => array(
+			'email' => 'abcdefghijklmnopqrstuvwxyz12345@gmail.com',
+		),
+	),
+	array(
+		'label'    => 'Gmail username with a leading dot',
+		'expected' => true,
+		'comment'  => array(
+			'email' => '.abcdef@gmail.com',
+		),
+	),
+	array(
+		'label'    => 'Gmail username with a trailing dot',
+		'expected' => true,
+		'comment'  => array(
+			'email' => 'abcdef.@gmail.com',
+		),
+	),
+	array(
+		'label'    => 'Gmail username with consecutive dots',
+		'expected' => true,
+		'comment'  => array(
+			'email' => 'abc..def@gmail.com',
+		),
+	),
+	array(
+		'label'    => 'Gmail username with an invalid character',
+		'expected' => true,
+		'comment'  => array(
+			'email' => 'abc_def@gmail.com',
+		),
+	),
+	array(
+		'label'    => 'invalid Googlemail username',
+		'expected' => true,
+		'comment'  => array(
+			'email' => 'abc..def@googlemail.com',
+		),
+	),
+	array(
+		'label'    => 'valid minimum-length Gmail username',
+		'expected' => false,
+		'comment'  => array(
+			'email' => 'abcdef@gmail.com',
+		),
+	),
+	array(
+		'label'    => 'valid maximum-length Gmail username',
+		'expected' => false,
+		'comment'  => array(
+			'email' => 'abcdefghijklmnopqrstuvwxyz1234@gmail.com',
+		),
+	),
+	array(
+		'label'    => 'valid Gmail address with many dots',
+		'expected' => false,
+		'comment'  => array(
+			'email' => 'j.o.h.n.s.m.i.t.h@gmail.com',
+		),
+	),
+	array(
+		'label'    => 'valid Gmail plus alias',
+		'expected' => false,
+		'comment'  => array(
+			'email' => 'john.smith+news@gmail.com',
+		),
+	),
+	array(
+		'label'    => 'valid Googlemail address',
+		'expected' => false,
+		'comment'  => array(
+			'email' => 'john.smith@googlemail.com',
+		),
+	),
+	array(
+		'label'    => 'invalid syntax on another email provider',
+		'expected' => false,
+		'comment'  => array(
+			'email' => 'abc..def@example.com',
 		),
 	),
 	array(
