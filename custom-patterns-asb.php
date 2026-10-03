@@ -47,6 +47,11 @@ function custom_patterns_asb_get_pattern_definitions() {
 			'description' => __( 'Blocks email addresses from Mail.ru and selected Yandex domains.', 'custom-patterns-asb' ),
 			'pattern'     => array( 'email' => '@(?:mail\.ru|yandex\.(?:ru|com|by|kz))$' ),
 		),
+		'provider-lookalike-domains' => array(
+			'label'       => __( 'Provider lookalike domains', 'custom-patterns-asb' ),
+			'description' => __( 'Detects exact Gmail and Yahoo lookalike domains observed in submitted spam.', 'custom-patterns-asb' ),
+			'pattern'     => array( 'email' => '@(?:glmail\.ga|yaghoo\.tk|gmaill\.gq|oogmail\.com|rhiannonathena\.paris-gmail\.top)$' ),
+		),
 		'invalid-gmail-address' => array(
 			'label'       => __( 'Invalid Gmail address', 'custom-patterns-asb' ),
 			'description' => __( 'Detects Gmail and Googlemail addresses that violate Google’s username syntax rules.', 'custom-patterns-asb' ),

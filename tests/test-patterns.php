@@ -66,7 +66,7 @@ require dirname( __DIR__ ) . '/custom-patterns-asb.php';
 $patterns = antispam_bee_add_custom_patterns( array() );
 $failures = array();
 
-if ( 21 !== count( $patterns ) ) {
+if ( 22 !== count( $patterns ) ) {
 	$failures[] = 'all patterns are enabled by default';
 }
 
@@ -272,6 +272,48 @@ $cases = array(
 		'expected' => true,
 		'comment'  => array(
 			'email' => 'person@yandex.com',
+		),
+	),
+	array(
+		'label'    => 'Gmail lookalike with inserted letter',
+		'expected' => true,
+		'comment'  => array(
+			'email' => 'person@glmail.ga',
+		),
+	),
+	array(
+		'label'    => 'Yahoo lookalike with inserted letter',
+		'expected' => true,
+		'comment'  => array(
+			'email' => 'person@yaghoo.tk',
+		),
+	),
+	array(
+		'label'    => 'Gmail lookalike with duplicated letter',
+		'expected' => true,
+		'comment'  => array(
+			'email' => 'person@gmaill.gq',
+		),
+	),
+	array(
+		'label'    => 'Gmail name embedded in an observed spam domain',
+		'expected' => true,
+		'comment'  => array(
+			'email' => 'person@rhiannonathena.paris-gmail.top',
+		),
+	),
+	array(
+		'label'    => 'unlisted Gmail typo domain',
+		'expected' => false,
+		'comment'  => array(
+			'email' => 'person@gmail.co',
+		),
+	),
+	array(
+		'label'    => 'Gmail lookalike with a prefixed syllable',
+		'expected' => true,
+		'comment'  => array(
+			'email' => 'person@oogmail.com',
 		),
 	),
 	array(
