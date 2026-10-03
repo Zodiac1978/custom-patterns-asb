@@ -3,7 +3,7 @@
  * Plugin Name: Custom Patterns for Antispam Bee
  * Description: Add custom patterns for Antispam Bee.
  * Plugin URI:  https://torstenlandsiedel.de
- * Version:     1.5.0
+ * Version:     1.6.0
  * Author:      Torsten Landsiedel
  * Author URI:  https://torstenlandsiedel.de
  * Requires PHP: 8.0
